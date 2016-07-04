@@ -1,2 +1,7 @@
 * tuclass
 utulsa class info
+[[https://raw.githubusercontent.com/benjamin-james/tuclass/master/scrot.png]]
+
+* Requirements
+Python 3
+Python 3 libraries: requests, bs4, PyQt5
