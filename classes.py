@@ -53,7 +53,10 @@ def do_stuff(data=["PHYS-2063-02",
                    "PHYS-2061-04"]):
         schedule = dict()
         for c in data:
-                schedule[c] = get_book_info(get_class_info(c))
+                try:
+                        schedule[c] = get_book_info(get_class_info(c))
+                except:
+                        pass
         return schedule
 
 if __name__ == "__main__":

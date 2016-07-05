@@ -3,9 +3,10 @@
 import sys
 import re
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit
-from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter
+from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter, QHeaderView
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QAbstractItemView
 from PyQt5.QtGui import QIcon
+import PyQt5.QtCore
 import classes
 
 
@@ -22,6 +23,7 @@ class ClassUI(QWidget):
                 self.headers = ['Class', 'Title', 'Edition', 'ISBN', 'Publisher', 'Author', 'Suggested Retail Price', 'Comments', 'Required']
                 self.table.setColumnCount(len(self.headers))
                 self.table.setHorizontalHeaderLabels(self.headers)
+                self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
                 self.le = []
                 self.le.append(QLineEdit(self))
                 self.le.append(QLineEdit(self))
@@ -42,7 +44,9 @@ class ClassUI(QWidget):
                 self.btn_layout.addWidget(self.rm_btn)
                 self.in_layout.addLayout(self.btn_layout)
                 for l in self.le:
+                        l.textChanged.connect(self.textChanged)
                         self.in_layout.addWidget(l)
+                self.regex = re.compile("^[A-Z]{2,4}-\d{4}(?:-\d{2})?$")
                 lside = QWidget(self)
                 lside.setLayout(self.in_layout)
                 self.layout.addWidget(lside)
@@ -68,13 +72,21 @@ class ClassUI(QWidget):
                 l.deleteLater()
                 l = None
 
+        def textChanged(self):
+                for l in self.le:
+                        t = l.text().upper().replace(' ', '-')
+                        t = re.sub(r"^([A-Z]{2,4})(\d{4})", r"\1-\2", t)
+                        l.setText(t)
+                        if self.regex.match(l.text()):
+                                l.setStyleSheet('color: black')
+                        else:
+                                l.setStyleSheet('color: red')
+
         def set_table_item(self, x, y, s):
                 self.table.setItem(x, y, QTableWidgetItem(s))
 
         def submit(self):
-
-                regex = re.compile("^[A-Z]{2,4}-\d{4}")
-                data = [l.text() for l in self.le if regex.match(l.text())]
+                data = [l.text() for l in self.le if self.regex.match(l.text())]
                 schedule = classes.do_stuff(data)
                 self.table.clear()
                 self.table.setHorizontalHeaderLabels(self.headers)
