@@ -3,5 +3,6 @@ utulsa class info
 [[https://raw.githubusercontent.com/benjamin-james/tuclass/master/scrot.png]]
 
 * Requirements
-Python 3
-Python 3 libraries: requests, bs4, PyQt5
+[[python.org][Python 3]]
+
+Python 3 libraries: [[http://docs.python-requests.org/en/master/][requests]], [[https://www.crummy.com/software/BeautifulSoup/bs4/doc/][bs4]], [[https://www.riverbankcomputing.com/software/pyqt/download5][PyQt5]]

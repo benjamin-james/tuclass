@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QAbstractItemView
 from PyQt5.QtGui import QIcon
 import PyQt5.QtCore
 import classes
-
+import search
 
 class ClassUI(QWidget):
 
@@ -20,7 +20,7 @@ class ClassUI(QWidget):
                 self.layout = QSplitter()
                 self.in_layout = QVBoxLayout()
                 self.table = QTableWidget()
-                self.headers = ['Class', 'Title', 'Edition', 'ISBN', 'Publisher', 'Author', 'Suggested Retail Price', 'Comments', 'Required']
+                self.headers = ['Class', 'Title', 'Buy online', 'Edition', 'ISBN', 'Publisher', 'Author', 'Suggested Retail Price', 'Comments', 'Required']
                 self.table.setColumnCount(len(self.headers))
                 self.table.setHorizontalHeaderLabels(self.headers)
                 self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -93,16 +93,18 @@ class ClassUI(QWidget):
                 cur_row = 0
                 for key in schedule:
                         for book in schedule[key]:
+                                result = search.ddg_crawl(search.ddg_search(book['Book Title'] + book['ISBN']))
                                 self.table.setRowCount(cur_row + 1)
                                 self.set_table_item(cur_row, 0, key)
                                 self.set_table_item(cur_row, 1, book['Book Title'])
-                                self.set_table_item(cur_row, 2, book['Edition'])
-                                self.set_table_item(cur_row, 3, book['ISBN'])
-                                self.set_table_item(cur_row, 4, book['Publisher'])
-                                self.set_table_item(cur_row, 5, book['Author'])
-                                self.set_table_item(cur_row, 6, book['Publishers Suggested Retail Price'])
-                                self.set_table_item(cur_row, 7, book['Comments'])
-                                self.set_table_item(cur_row, 8, book['Required'])
+                                self.set_table_item(cur_row, 2, result)
+                                self.set_table_item(cur_row, 3, book['Edition'])
+                                self.set_table_item(cur_row, 4, book['ISBN'])
+                                self.set_table_item(cur_row, 5, book['Publisher'])
+                                self.set_table_item(cur_row, 6, book['Author'])
+                                self.set_table_item(cur_row, 7, book['Publishers Suggested Retail Price'])
+                                self.set_table_item(cur_row, 8, book['Comments'])
+                                self.set_table_item(cur_row, 9, book['Required'])
                                 cur_row += 1
 
 
