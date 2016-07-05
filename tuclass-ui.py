@@ -50,7 +50,7 @@ class ClassUI(QWidget):
                 l.addWidget(self.layout)
                 self.setLayout(l)
                 self.setGeometry(300, 300, 800, 600)
-                self.setWindowTitle(sys.argv[0])
+                self.setWindowTitle('Tulsa class info')
                 self.show()
 
         def add_le(self):
