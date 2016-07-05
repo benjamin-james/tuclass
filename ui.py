@@ -4,7 +4,7 @@ import sys
 import re
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QAbstractItemView
 import classes
 
 
@@ -28,6 +28,7 @@ class ClassUI(QWidget):
                 self.le.append(QLineEdit(self))
                 self.le.append(QLineEdit(self))
                 self.table.setRowCount(len(self.le))
+                self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
                 self.submit_btn = QPushButton('Submit', self)
                 self.submit_btn.clicked.connect(self.submit)
                 self.add_btn = QPushButton('+', self)
@@ -75,10 +76,7 @@ class ClassUI(QWidget):
                 self.table.setHorizontalHeaderLabels(self.headers)
                 cur_row = 0
                 for key in schedule:
-
                         for book in schedule[key]:
-                                cur_col = 1
-
                                 self.table.setRowCount(cur_row + 1)
                                 self.set_table_item(cur_row, 0, key)
                                 self.set_table_item(cur_row, 1, book['Book Title'])
@@ -89,10 +87,7 @@ class ClassUI(QWidget):
                                 self.set_table_item(cur_row, 6, book['Publishers Suggested Retail Price'])
                                 self.set_table_item(cur_row, 7, book['Comments'])
                                 self.set_table_item(cur_row, 8, book['Required'])
-                                #for k in book:
                                 cur_row += 1
-
-                print(schedule)
 
 
 if __name__ == '__main__':
