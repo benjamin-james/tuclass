@@ -36,7 +36,7 @@ class ClassUI(QWidget):
                 self.rm_btn = QPushButton('-', self)
                 self.rm_btn.clicked.connect(self.rm_le)
                 self.btn_layout = QHBoxLayout()
-                self.btn_layout.addWidget(self.submit_btn)
+                self.in_layout.addWidget(self.submit_btn)
                 self.btn_layout.addWidget(self.add_btn)
                 self.btn_layout.addWidget(self.rm_btn)
                 self.in_layout.addLayout(self.btn_layout)
