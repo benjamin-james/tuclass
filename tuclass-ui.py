@@ -28,7 +28,7 @@ class ClassUI(QWidget):
                 self.le.append(QLineEdit(self))
                 self.le.append(QLineEdit(self))
                 self.table.setRowCount(len(self.le))
-                self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+                #self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
                 self.submit_btn = QPushButton('Submit', self)
                 self.submit_btn.clicked.connect(self.submit)
                 self.add_btn = QPushButton('+', self)
