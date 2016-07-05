@@ -5,6 +5,7 @@ import re
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QAbstractItemView
+from PyQt5.QtGui import QIcon
 import classes
 
 
@@ -49,6 +50,9 @@ class ClassUI(QWidget):
                 l = QVBoxLayout()
                 l.addWidget(self.layout)
                 self.setLayout(l)
+                app_icon = QIcon()
+                app_icon.addFile('tulsa.jpg')
+                self.setWindowIcon(app_icon)
                 self.setGeometry(300, 300, 800, 600)
                 self.setWindowTitle('Tulsa class info')
                 self.show()
