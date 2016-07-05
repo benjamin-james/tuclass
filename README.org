@@ -1,2 +1,2 @@
-# tuclass
+* tuclass
 utulsa class info
