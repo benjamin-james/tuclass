@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 import sys
 import re
-from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit
+from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit, QTabWidget
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter, QHeaderView
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QAbstractItemView
 from PyQt5.QtGui import QIcon
 import PyQt5.QtCore
 import classes
+from weekview import WeekView
 import search
+import time
 
 class ClassUI(QWidget):
 
@@ -50,7 +52,12 @@ class ClassUI(QWidget):
                 lside = QWidget(self)
                 lside.setLayout(self.in_layout)
                 self.layout.addWidget(lside)
-                self.layout.addWidget(self.table)
+
+                self.tab = QTabWidget(self)
+                self.tab.addTab(self.table, 'Books')
+                self.calendar = WeekView()
+                self.tab.addTab(self.calendar, 'Calendar')
+                self.layout.addWidget(self.tab)
                 l = QVBoxLayout()
                 l.addWidget(self.layout)
                 self.setLayout(l)
@@ -86,8 +93,10 @@ class ClassUI(QWidget):
                 self.table.setItem(x, y, QTableWidgetItem(s))
 
         def submit(self):
+                #self.calendar.add_event(time.strptime('Monday 09:00AM', '%A %I:%M%p'), time.strptime('Monday 09:50AM', '%A %I:%M%p'), 'foo\nbaz', 'bar')
                 data = [l.text() for l in self.le if self.regex.match(l.text())]
-                schedule = classes.do_stuff(data)
+                schedule, times = classes.do_stuff(data)
+                self.calendar.refresh()
                 self.table.clear()
                 self.table.setHorizontalHeaderLabels(self.headers)
                 cur_row = 0
@@ -106,6 +115,9 @@ class ClassUI(QWidget):
                                 self.set_table_item(cur_row, 8, book['Comments'])
                                 self.set_table_item(cur_row, 9, book['Required'])
                                 cur_row += 1
+                for item in times:
+                        for tup in item['times']:
+                                self.calendar.add_event(tup[0], tup[1], item['name'], item['building'] + ' ' + item['room'])
 
 
 if __name__ == '__main__':
