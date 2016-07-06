@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QTableWidget, QHeaderView, QTableWidgetItem
-from PyQt5.QtGui import QColor
+from PyQt5.QtGui import QColor, QFont
 import time
 
 
@@ -62,3 +62,4 @@ class WeekView(QTableWidget):
                         self.setItem(r, column, QTableWidgetItem(s))
                         self.item(r, column).setBackground(color)
                         self.item(r, column).setForeground(QColor(255, 255, 255))
+                        self.item(r, column).setFont(QFont('SansSerif'))

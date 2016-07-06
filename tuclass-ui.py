@@ -4,13 +4,12 @@ import sys
 import re
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit, QTabWidget
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter, QHeaderView
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QAbstractItemView
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
 from PyQt5.QtGui import QIcon
-import PyQt5.QtCore
 import classes
 from weekview import WeekView
 import search
-import time
+
 
 class ClassUI(QWidget):
 
@@ -94,7 +93,6 @@ class ClassUI(QWidget):
                 self.table.setItem(x, y, QTableWidgetItem(s))
 
         def submit(self):
-                #self.calendar.add_event(time.strptime('Monday 09:00AM', '%A %I:%M%p'), time.strptime('Monday 09:50AM', '%A %I:%M%p'), 'foo\nbaz', 'bar')
                 data = [l.text() for l in self.le if self.regex.match(l.text())]
                 schedule, times = classes.do_stuff(data)
                 self.calendar.refresh()

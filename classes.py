@@ -61,8 +61,8 @@ def do_stuff(data=["PHYS-2063-02",
         for c in data:
                 try:
                         bs = get_class_info(c)
-                        schedule[c] = get_book_info(bs)
                         times.extend(classinfo.get_info(bs))
+                        schedule[c] = get_book_info(bs)
                 except:
                         pass
         return schedule, times
