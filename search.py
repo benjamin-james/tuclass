@@ -19,5 +19,6 @@ def ddg_crawl(bs):
                 if "result--ad" in d["class"]:
                         continue
                 children = d.findChildren('a')
-                return children[0]['href']
+                if 'amazon.com' in children[0]['href']:
+                        return children[0]['href']
         return ""
