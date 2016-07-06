@@ -2,7 +2,7 @@ import time
 import re
 
 regex = re.compile(r'^(\w+)\s+(\S+)\s+(\w+)\s+(\d{2}:\d{2}[AP]M)-(\d{2}:\d{2}[AP]M)$')
-
+re_tag = re.compile(r'</?br>')
 
 def get_info(bs):
         table = bs.findChild('table')
@@ -17,6 +17,7 @@ def get_info(bs):
         data = []
         for s in info:
                 d = dict()
+                s = re.sub(re_tag, '', s)
                 m = regex.match(s)
                 if not m:
                         continue

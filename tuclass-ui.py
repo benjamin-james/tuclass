@@ -16,6 +16,8 @@ class ClassUI(QWidget):
         def __init__(self):
                 super().__init__()
                 self.initUI()
+                self.re_1 = re.compile(r"^([A-Z]{2,4})(\d{4})")
+                self.re_2 = re.compile(r"^([A-Z]{2,4})-(\d{4})(\d{2})$")
 
         def initUI(self):
                 self.layout = QSplitter()
@@ -82,8 +84,8 @@ class ClassUI(QWidget):
         def textChanged(self):
                 for l in self.le:
                         t = l.text().upper().replace(' ', '-')
-                        t = re.sub(r"^([A-Z]{2,4})(\d{4})", r"\1-\2", t)
-                        t = re.sub(r"^([A-Z]{2,4})-(\d{4})(\d{2})$", r"\1-\2-\3", t)
+                        t = re.sub(self.re_1, r"\1-\2", t)
+                        t = re.sub(self.re_2, r"\1-\2-\3", t)
                         l.setText(t)
                         if self.regex.match(l.text()):
                                 l.setStyleSheet('color: black')

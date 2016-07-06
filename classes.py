@@ -8,7 +8,7 @@ import re
 import classinfo
 
 def get_bs(link):
-        return BeautifulSoup(requests.get(link).text)
+        return BeautifulSoup(requests.get(link).text, "html.parser")
 
 
 def get_department_soup(dept="CS"):
