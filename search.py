@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 def ddg_search(term):
         url = 'https://duckduckgo.com/html/?q=' + term
-        return BeautifulSoup(requests.get(url).text)
+        return BeautifulSoup(requests.get(url).text, "html.parser")
 
 
 def ddg_crawl(bs):
