@@ -70,6 +70,7 @@ class ClassUI(QWidget):
 
         def add_le(self):
                 l = QLineEdit(self)
+                l.textChanged.connect(self.textChanged)
                 self.in_layout.addWidget(l)
                 self.le.append(l)
 
