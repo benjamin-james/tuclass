@@ -61,3 +61,4 @@ class WeekView(QTableWidget):
                                 s = sub
                         self.setItem(r, column, QTableWidgetItem(s))
                         self.item(r, column).setBackground(color)
+                        self.item(r, column).setForeground(QColor(255, 255, 255))
