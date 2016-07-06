@@ -102,13 +102,18 @@ class ClassUI(QWidget):
                 self.table.clear()
                 self.table.setHorizontalHeaderLabels(self.headers)
                 cur_row = 0
+                for item in times:
+                        for tup in item['times']:
+                                self.calendar.add_event(tup[0], tup[1], item['name'], item['building'] + ' ' + item['room'])
                 for key in schedule:
                         for book in schedule[key]:
-                                result = search.ddg_crawl(search.ddg_search(book['Book Title'] + book['ISBN']))
                                 self.table.setRowCount(cur_row + 1)
+                                if book['Book Title'] != "No Books Required":
+
+                                        result = search.ddg_crawl(search.ddg_search(book['Book Title'] + book['ISBN']))
+                                        self.set_table_item(cur_row, 2, result)
                                 self.set_table_item(cur_row, 0, key)
                                 self.set_table_item(cur_row, 1, book['Book Title'])
-                                self.set_table_item(cur_row, 2, result)
                                 self.set_table_item(cur_row, 3, book['Edition'])
                                 self.set_table_item(cur_row, 4, book['ISBN'])
                                 self.set_table_item(cur_row, 5, book['Publisher'])
@@ -117,10 +122,6 @@ class ClassUI(QWidget):
                                 self.set_table_item(cur_row, 8, book['Comments'])
                                 self.set_table_item(cur_row, 9, book['Required'])
                                 cur_row += 1
-                for item in times:
-                        for tup in item['times']:
-                                self.calendar.add_event(tup[0], tup[1], item['name'], item['building'] + ' ' + item['room'])
-
 
 if __name__ == '__main__':
         app = QApplication(sys.argv)
