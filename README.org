@@ -8,6 +8,7 @@ utulsa class info
 
 Python 3 libraries: [[http://docs.python-requests.org/en/master/][requests]], [[https://www.crummy.com/software/BeautifulSoup/bs4/doc/][bs4]], [[https://www.riverbankcomputing.com/software/pyqt/download5][PyQt5]]
 
+* Download
+Go to [[https://github.com/benjamin-james/tuclass/releases/][releases]] to download the application
 * Usage
-Go to selfservice.utulsa.edu to get the full class names including section numbers
-
+Go to [[https://selfservice.utulsa.edu][selfservice.utulsa.edu]] to get the full class names including section numbers
