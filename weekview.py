@@ -16,11 +16,11 @@ class WeekView(QTableWidget):
                 self.hour_end = 20
                 for hour in range(self.hour_begin, self.hour_end):
                         for m in range(4):
-                                s = "%02d:%02d - " % (hour % 12, m * 15)
+                                s = "%02d:%02d - " % ((hour - 1) % 12 + 1, m * 15)
                                 m += 1
                                 if m == 4:
                                         hour += 1
-                                s += "%02d:%02d" % (hour % 12, (m * 15) % 60)
+                                s += "%02d:%02d" % ((hour - 1) % 12 + 1, (m * 15) % 60)
                                 v.append(s)
                 self.vert_headers = v
                 self.setColumnCount(len(self.headers))
