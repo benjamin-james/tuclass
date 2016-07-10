@@ -28,11 +28,8 @@ class ClassUI(QWidget):
                 self.table.setHorizontalHeaderLabels(self.headers)
                 self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
                 self.le = []
-                self.le.append(QLineEdit(self))
-                self.le.append(QLineEdit(self))
-                self.le.append(QLineEdit(self))
-                self.le.append(QLineEdit(self))
-                self.le.append(QLineEdit(self))
+                for i in range(5):
+                        self.le.append(QLineEdit(self))
                 self.table.setRowCount(len(self.le))
                 #self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
                 self.submit_btn = QPushButton('Submit', self)
@@ -109,7 +106,6 @@ class ClassUI(QWidget):
                         for book in schedule[key]:
                                 self.table.setRowCount(cur_row + 1)
                                 if book['Book Title'] != "No Books Required":
-
                                         result = search.ddg_crawl(search.ddg_search(book['Book Title'] + book['ISBN']))
                                         self.set_table_item(cur_row, 2, result)
                                 self.set_table_item(cur_row, 0, key)
