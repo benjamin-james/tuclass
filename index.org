@@ -30,18 +30,18 @@ In the past, I took a screenshot of [[file:http://selfservice.utulsa.edu][selfse
 If you have any comments, bug reports, or feature requests, please tell me. Shoot me an email at [[file:mailto:benjamin-james@utulsa.edu][benjamin-james@utulsa.edu]] or send a Pull Request for this repo.
 * Current Release
 
-Current release: [[file:https://github.com/benjamin-james/tuclass/releases/latest][v3.0]]
+Current release: [[file:https://github.com/benjamin-james/tuclass/releases/latest][v0.4]]
 
 Binaries are provided for Linux, Mac OS X, and Windows.
 
 |---------+----------+---------------|
-| [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.3/tuclass-windows.zip][Windows]] | [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.3/tuclass-mac.zip][Mac OS X]] | [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.3/tuclass-linux-amd64.tar.gz][Linux (amd64)]] |
+| [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.4/tuclass-windows.zip][Windows]] | [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.4/tuclass-mac.zip][Mac OS X]] | [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.4/tuclass-linux-amd64.tar.gz][Linux (amd64)]] |
 |---------+----------+---------------|
 
 Source code is also provided for the current release
 
 |------------------+---------------|
-| [[file:https://github.com/benjamin-james/tuclass/archive/v0.3.tar.gz][Source (.tar.gz)]] | [[file:https://github.com/benjamin-james/tuclass/archive/v0.3.zip][Source (.zip)]] |
+| [[file:https://github.com/benjamin-james/tuclass/archive/v0.4.tar.gz][Source (.tar.gz)]] | [[file:https://github.com/benjamin-james/tuclass/archive/v0.4.zip][Source (.zip)]] |
 |------------------+---------------|
 
 More information can be found at the development site, [[https://github.com/benjamin-james/tuclass]]
