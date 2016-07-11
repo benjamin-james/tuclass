@@ -1,3 +1,4 @@
+# -*- Org -*-
 #+TITLE: tuclass
 #+AUTHOR:    Benjamin James
 #+EMAIL:     bjames@openmailbox.org
@@ -20,7 +21,13 @@ tuclass is a desktop application intended to provide useful information about th
 #+ATTR_HTML: :width 600px
 [[file:books.png]]
 
+* Features
+Type in your class names to get the book links on Amazon
 
+If you include the correct section number, it will make a schedule with the building and room number to find your classes.
+In the past, I took a screenshot of [[file:http://selfservice.utulsa.edu][selfservice.utulsa.edu]] and using [[file:https://gimp.org/][GIMP]], I added on the building and room numbers. I felt that this application may be of some use to other people, so I made it.
+
+If you have any comments, bug reports, or feature requests, please tell me. Shoot me an email at [[file:mailto:benjamin-james@utulsa.edu][benjamin-james@utulsa.edu]] or send a Pull Request for this repo.
 * Current Release
 
 Current release: [[file:https://github.com/benjamin-james/tuclass/releases/latest][v3.0]]
