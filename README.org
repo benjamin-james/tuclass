@@ -1,7 +1,7 @@
 * tuclass
 utulsa class info
-[[https://raw.githubusercontent.com/benjamin-james/tuclass/master/schedule.png]]
-[[https://raw.githubusercontent.com/benjamin-james/tuclass/master/books.png]]
+[[https://benjamin-james.github.io/tuclass/schedule.png]]
+[[https://benjamin-james.github.io/tuclass/books.png]]
 
 * Requirements
 [[python.org][Python 3]]
