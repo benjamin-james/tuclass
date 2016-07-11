@@ -1,0 +1,40 @@
+#+TITLE: tuclass
+#+AUTHOR:    Benjamin James
+#+EMAIL:     bjames@openmailbox.org
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+OPTIONS: html-postamble:nil
+#+EXPORT_SELECT_TAGS: noexport
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+
+* Welcome!
+:PROPERTIES:
+:CUSTOM_ID: welcome
+:END:
+tuclass is a desktop application intended to provide useful information about the University of Tulsa's classes.
+
+#+ATTR_HTML: :width 600px
+[[file:schedule.png]]
+#+ATTR_HTML: :width 600px
+[[file:books.png]]
+
+
+* Current Release
+
+Current release: [[file:https://github.com/benjamin-james/tuclass/releases/latest][v3.0]]
+
+Binaries are provided for Linux, Mac OS X, and Windows.
+
+|---------+----------+---------------|
+| [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.3/tuclass-windows.zip][Windows]] | [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.3/tuclass-mac.zip][Mac OS X]] | [[file:https://github.com/benjamin-james/tuclass/releases/download/v0.3/tuclass-linux-amd64.tar.gz][Linux (amd64)]] |
+|---------+----------+---------------|
+
+Source code is also provided for the current release
+
+|------------------+---------------|
+| [[file:https://github.com/benjamin-james/tuclass/archive/v0.3.tar.gz][Source (.tar.gz)]] | [[file:https://github.com/benjamin-james/tuclass/archive/v0.3.zip][Source (.zip)]] |
+|------------------+---------------|
+
+More information can be found at the development site, [[https://github.com/benjamin-james/tuclass]]
