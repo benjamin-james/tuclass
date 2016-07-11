@@ -5,7 +5,8 @@ import re
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QLineEdit, QTabWidget
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QSplitter, QHeaderView
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QDesktopServices
+from PyQt5.QtCore import Qt, QUrl
 import classes
 from weekview import WeekView
 import search
@@ -26,7 +27,9 @@ class ClassUI(QWidget):
                 self.headers = ['Class', 'Title', 'Amazon', 'Bookstore', 'Edition', 'ISBN', 'Publisher', 'Author', 'Suggested Retail Price', 'Comments', 'Required']
                 self.table.setColumnCount(len(self.headers))
                 self.table.setHorizontalHeaderLabels(self.headers)
+                self.table.cellDoubleClicked.connect(self.tableClicked)
                 self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+#                self.table.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
                 self.le = []
                 for i in range(5):
                         self.le.append(QLineEdit(self))
@@ -89,6 +92,18 @@ class ClassUI(QWidget):
                         else:
                                 l.setStyleSheet('color: red')
 
+        def tableClicked(self, r, c):
+                if c == 2 or c == 3:
+                        cell = self.table.item(r, c)
+                        if cell:
+                                url = cell.text()
+                                if url:
+                                        QDesktopServices.openUrl(QUrl(url))
+
+        def keyPressEvent(self, event):
+                if event.key() == Qt.Key_Escape:
+                        self.close()
+
         def set_table_item(self, x, y, s):
                 self.table.setItem(x, y, QTableWidgetItem(s))
 
@@ -107,7 +122,7 @@ class ClassUI(QWidget):
                                 self.table.setRowCount(cur_row + 1)
                                 if book['Book Title'] != "No Books Required":
                                         result = search.ddg_crawl(search.ddg_search(book['Book Title'] + ' ' + book['ISBN']))
-                                        bkstr = search.bookstore_get_url(book['Book Title'] + ' ' + book['ISBN'])
+                                        bkstr = search.bookstore_get_url(book['Book Title'])
                                         self.set_table_item(cur_row, 2, result)
                                         self.set_table_item(cur_row, 3, bkstr)
                                 self.set_table_item(cur_row, 0, key)
