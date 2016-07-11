@@ -107,7 +107,7 @@ class ClassUI(QWidget):
                                 self.table.setRowCount(cur_row + 1)
                                 if book['Book Title'] != "No Books Required":
                                         result = search.ddg_crawl(search.ddg_search(book['Book Title'] + ' ' + book['ISBN']))
-                                        bkstr = search.bookstore_get_url(book['ISBN'])
+                                        bkstr = search.bookstore_get_url(book['Book Title'] + ' ' + book['ISBN'])
                                         self.set_table_item(cur_row, 2, result)
                                         self.set_table_item(cur_row, 3, bkstr)
                                 self.set_table_item(cur_row, 0, key)
