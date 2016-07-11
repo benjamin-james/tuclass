@@ -23,7 +23,7 @@ class ClassUI(QWidget):
                 self.layout = QSplitter()
                 self.in_layout = QVBoxLayout()
                 self.table = QTableWidget()
-                self.headers = ['Class', 'Title', 'Buy online', 'Edition', 'ISBN', 'Publisher', 'Author', 'Suggested Retail Price', 'Comments', 'Required']
+                self.headers = ['Class', 'Title', 'Amazon', 'Bookstore', 'Edition', 'ISBN', 'Publisher', 'Author', 'Suggested Retail Price', 'Comments', 'Required']
                 self.table.setColumnCount(len(self.headers))
                 self.table.setHorizontalHeaderLabels(self.headers)
                 self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -106,17 +106,19 @@ class ClassUI(QWidget):
                         for book in schedule[key]:
                                 self.table.setRowCount(cur_row + 1)
                                 if book['Book Title'] != "No Books Required":
-                                        result = search.ddg_crawl(search.ddg_search(book['Book Title'] + book['ISBN']))
+                                        result = search.ddg_crawl(search.ddg_search(book['Book Title'] + ' ' + book['ISBN']))
+                                        bkstr = search.bookstore_get_url(book['ISBN'])
                                         self.set_table_item(cur_row, 2, result)
+                                        self.set_table_item(cur_row, 3, bkstr)
                                 self.set_table_item(cur_row, 0, key)
                                 self.set_table_item(cur_row, 1, book['Book Title'])
-                                self.set_table_item(cur_row, 3, book['Edition'])
-                                self.set_table_item(cur_row, 4, book['ISBN'])
-                                self.set_table_item(cur_row, 5, book['Publisher'])
-                                self.set_table_item(cur_row, 6, book['Author'])
-                                self.set_table_item(cur_row, 7, book['Publishers Suggested Retail Price'])
-                                self.set_table_item(cur_row, 8, book['Comments'])
-                                self.set_table_item(cur_row, 9, book['Required'])
+                                self.set_table_item(cur_row, 4, book['Edition'])
+                                self.set_table_item(cur_row, 5, book['ISBN'])
+                                self.set_table_item(cur_row, 6, book['Publisher'])
+                                self.set_table_item(cur_row, 7, book['Author'])
+                                self.set_table_item(cur_row, 8, book['Publishers Suggested Retail Price'])
+                                self.set_table_item(cur_row, 9, book['Comments'])
+                                self.set_table_item(cur_row, 10, book['Required'])
                                 cur_row += 1
 
 if __name__ == '__main__':
